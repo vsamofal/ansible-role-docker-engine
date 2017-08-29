@@ -38,11 +38,7 @@
     path: /etc/docker
     state: directory
 
-- name: set storage driver
-  blockinfile:
-    path: /etc/docker/daemon.json
-    create: yes
-    block: |
-      {
-        "storage-driver": "devicemapper"
-      }
+- name: set default daemon.json
+  template:
+    dest: /etc/docker/daemon.json
+    src: ./files/daemon.json
